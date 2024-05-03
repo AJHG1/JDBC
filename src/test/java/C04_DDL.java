@@ -23,9 +23,9 @@ public class C04_DDL {
 
     public static void main(String[] args) throws SQLException {
         // 1- Create Connection
-        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample","root","1234");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample", "root", "1234");
         // 2- Create Statement/Query
-        Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         // 3- Execute Statement/Query
         // 4- Store results in ResultSet
 
@@ -35,44 +35,44 @@ public class C04_DDL {
 
         // Method 1: Using execute() method
 
-       // System.out.println("Result is : "+ st.execute(query)); // false if could create table
+        System.out.println("Result is : " + st.execute(query)); // false if could create table
 
         // execute() returns a Boolean value.
         // It returns false for DDL operations (since it does not produce a ResultSet), and true for DML operations (which produce a ResultSet).
 
         // Method 2: Using executeUpdate() method
-        // int result2 = st.executeUpdate(query);
-       // System.out.println("The brands table has been created -> " + result2); // The brands table has been created -> 0
+        int result2 = st.executeUpdate(query);
+        System.out.println("The brands table has been created -> " + result2); // The brands table has been created -> 0
 
         // QUESTION: Drop the 'brands' table
-      //  String dropQuery = "drop table brands";
-       // System.out.println(st.execute(dropQuery));
+        String dropQuery = "drop table brands";
+        System.out.println(st.execute(dropQuery));
 
         // QUESTION: Add a new column {branch_count int} to the 'brands' table
-       // String alterQuery = "Alter table brands add column branch_count int";
-        // st.execute(alterQuery);
-        // System.out.println("column is added");
+        String alterQuery = "Alter table brands add column branch_count int";
+        st.execute(alterQuery);
+        System.out.println("column is added");
 
         // QUESTION: Add a new column {branch_count int} to the 'brands' table, but this time place it after brand_id
         //After Dropping column branch_count
-        //String alterQuery2 = "Alter table brands add column branch_count int after brand_id";
-        //st.execute(alterQuery2);
-        //System.out.println("column branch_count is added after brand_id");
+        String alterQuery2 = "Alter table brands add column branch_count int after brand_id";
+        st.execute(alterQuery2);
+        System.out.println("column branch_count is added after brand_id");
 
         // QUESTION: Change the name of the 'brands' table to 'all_brands'
-        //String alterQuery3 = "RENAME TABLE brands TO all_brands";
-        //st.execute(alterQuery3);
-        //System.out.println("Table brands has been changed to all_brands");
+        String alterQuery3 = "RENAME TABLE brands TO all_brands";
+        st.execute(alterQuery3);
+        System.out.println("Table brands has been changed to all_brands");
 
         // QUESTION: Rename the 'brand_name' column in the 'all_brands' table to 'name'
-        //String alterQuery4 = "Alter table all_brands rename column brand_name to name";
-        //st.execute(alterQuery4);
-        //System.out.println("the 'brand_name' column in the 'all_brands' table has been changed to name");
+        String alterQuery4 = "Alter table all_brands rename column brand_name to name";
+        st.execute(alterQuery4);
+        System.out.println("the 'brand_name' column in the 'all_brands' table has been changed to name");
 
         // QUESTION: Change the data type of the 'brand_name' column in the 'brands' table to char(20)
-        //String alterQuery5 = "Alter table all_brands modify column name char(20)";
-        //st.execute(alterQuery5);
-        //System.out.println("the 'name' column in the 'all_brands' table has been changed to name char(20)");
+        String alterQuery5 = "Alter table all_brands modify column name char(20)";
+        st.execute(alterQuery5);
+        System.out.println("the 'name' column in the 'all_brands' table has been changed to name char(20)");
 
     }
 

@@ -5,7 +5,7 @@ public class C01_Connection {
     public static void main(String[] args) throws SQLException {
 
         // 1- Create Connection
-        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample","root","1234");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample", "root", "1234");
         // 2- Create Statement/Query
         Statement st = conn.createStatement();
         // 3- Execute Statement/Query

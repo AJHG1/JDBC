@@ -39,9 +39,9 @@ public class C02_ReadData01 {
     public static void main(String[] args) throws SQLException {
         Connection connection;
         try {
-           connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample"
-                                                    ,"root"
-                                                    ,"1234");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample"
+                    , "root"
+                    , "1234");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -61,45 +61,44 @@ public class C02_ReadData01 {
 
         // Let's print all data for the second record (row)
         resultSet.next();
-        System.out.println( resultSet.getObject(1)+"   "
-                            +resultSet.getObject(2)+"   "
-                            +resultSet.getObject(3)+"   "
-                            +resultSet.getObject(4)+"   "
-                            +resultSet.getObject(5)+"   ");
+        System.out.println(resultSet.getObject(1) + "   "
+                + resultSet.getObject(2) + "   "
+                + resultSet.getObject(3) + "   "
+                + resultSet.getObject(4) + "   "
+                + resultSet.getObject(5) + "   ");
 
         // Let's print the all values in the first row
         resultSet.absolute(1);
-            System.out.println( resultSet.getObject(1)+"   "
-                +resultSet.getObject(2)+"   "
-                +resultSet.getObject(3)+"   "
-                +resultSet.getObject(4)+"   "
-                +resultSet.getObject(5)+"   ");
+        System.out.println(resultSet.getObject(1) + "   "
+                + resultSet.getObject(2) + "   "
+                + resultSet.getObject(3) + "   "
+                + resultSet.getObject(4) + "   "
+                + resultSet.getObject(5) + "   ");
 
 
-
-    // If we want to print all values in a column;  //
+        // If we want to print all values in a column;  //
         resultSet.absolute(0);
-        while (resultSet.next()){
+        while (resultSet.next()) {
             System.out.println(resultSet.getObject("salary"));
         }
 
-    // The reason we go to the 0th row is, because the while loop contains resultSet.next()
-    // which moves us to the first record.
-    // If we were to go to the 1st row, due to next() method inside while loop;,
-    // printing would start from the 2nd row, and we wouldn't be able to get the entire list.
+        // The reason we go to the 0th row is, because the while loop contains resultSet.next()
+        // which moves us to the first record.
+        // If we were to go to the 1st row, due to next() method inside while loop;,
+        // printing would start from the 2nd row, and we wouldn't be able to get the entire list.
 
 
-    // If we want to print the entire list;
+        // If we want to print the entire list;
         resultSet.absolute(0);
-        while (resultSet.next()){
-            System.out.println(resultSet.getObject(1)+ "   "
-                    + resultSet.getObject(2)+ "   "
-                    + resultSet.getObject(3)+ "   "
-                    + resultSet.getObject(4)+ "   "
+        while (resultSet.next()) {
+            System.out.println(resultSet.getObject(1) + "   "
+                    + resultSet.getObject(2) + "   "
+                    + resultSet.getObject(3) + "   "
+                    + resultSet.getObject(4) + "   "
                     + resultSet.getObject(5));
         }
 
 
-   }
+    }
 
 }
